@@ -2,17 +2,34 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <title>Rover Control Panel</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <h1>Hello World!</h1>
-    We are using Node.js <span id="node-version"></span>,
+    <!--We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    and Electron <span id="electron-version"></span>. -->
 
+    <img src="http://bitcoinshell.mooo.com:57001/snapshot">
+
+    <h3 id="mediumyheader"> this says this </h3>
+    <script>
+    
+    function stuff()  {
+    	setTimeout(moreStuff, 5000);
+    	
+    	
+    }
+    
+    function moreStuff() {
+    	
+    	document.getElementById("mediumyheader").innerText = "stuff happened";
+    	
+    	
+    }
+    stuff();
+    </script>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
   </body>

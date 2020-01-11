@@ -1,18 +1,16 @@
 {
-  "name": "electron-quick-start",
+  "name": "swappy-rover-ui",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "A minimal UI for controlling Swappy, based on Sawppy",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Rover",
+    "Sawppy",
+    "Swappy"
   ],
   "author": "GitHub",
   "license": "CC0-1.0",
