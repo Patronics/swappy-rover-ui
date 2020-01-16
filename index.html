@@ -6,31 +6,51 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+  
     <h1>Hello World!</h1>
     <!--We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>. -->
 
-    <img src="http://bitcoinshell.mooo.com:57001/snapshot">
+    <img id="snapshot" width="640" height="480" src="http://bitcoinshell.mooo.com:57001/snapshot">
+    <!-- width of image is given as 640x480 -->
+    <!--<h3 id="mediumyheader"> this says this </h3> -->
+	<canvas id="tempgauge" data-width="100" data-height="100" data-type="radial-gauge"></canvas>
 
-    <h3 id="mediumyheader"> this says this </h3>
+
     <script>
-    
-    function stuff()  {
-    	setTimeout(moreStuff, 5000);
-    	
-    	
-    }
-    
-    function moreStuff() {
-    	
-    	document.getElementById("mediumyheader").innerText = "stuff happened";
-    	
-    	
-    }
-    stuff();
+    var canvasgauges = require('canvas-gauges');
+    requestJSON = require('request-json');
+	var client = requestJSON.createClient('http://bitcoinshell.mooo.com:57001/');
+	
+    document.getElementById('snapshot').src = document.getElementById('snapshot').src + '?time=' + (new Date()).getTime();
+	client.get('sensors.json', updateSensorVars);
+	var tempgauge = new canvasgauges.RadialGauge({
+		renderTo: 'tempgauge',
+		width: 100,
+		height: 100,
+	}).draw();
+	function updateSensorVars(err, res, body)  {
+		
+		if (err){
+			throw err;
+		}
+		console.log(body)
+		tempgauge.draw();
+		tempgauge.value = body.tempf;
+		
+		
+	}
+
+
+
+
+	function moreStuff() {
+	
+	
+	
+	}
+    //updateSensorVars();
     </script>
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
   </body>
 </html>

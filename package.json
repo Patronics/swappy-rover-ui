@@ -16,5 +16,9 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^7.1.4"
+  },
+  "dependencies": {
+    "canvas-gauges": "^2.1.5",
+    "request-json": "^0.6.4"
   }
 }
