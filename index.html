@@ -12,7 +12,7 @@
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>. -->
 
-    <img id="snapshot" width="640" height="480" src="http://bitcoinshell.mooo.com:57001/snapshot">
+    <img id="snapshot" width="640" height="480" src="">
     <!-- width of image is given as 640x480 -->
     <!--<h3 id="mediumyheader"> this says this </h3> -->
 	<canvas id="tempgauge" data-width="100" data-height="100" data-type="radial-gauge"></canvas>
@@ -23,7 +23,7 @@
     requestJSON = require('request-json');
 	var client = requestJSON.createClient('http://bitcoinshell.mooo.com:57001/');
 	
-    document.getElementById('snapshot').src = document.getElementById('snapshot').src + '?time=' + (new Date()).getTime();
+    document.getElementById('snapshot').src = "http://bitcoinshell.mooo.com:57001/snapshot" + '?time=' + (new Date()).getTime();
 	client.get('sensors.json', updateSensorVars);
 	var tempgauge = new canvasgauges.RadialGauge({
 		renderTo: 'tempgauge',
