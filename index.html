@@ -20,16 +20,26 @@
 
     <script>
     var canvasgauges = require('canvas-gauges');
-    requestJSON = require('request-json');
+    var requestJSON = require('request-json');
 	var client = requestJSON.createClient('http://bitcoinshell.mooo.com:57001/');
 	
-    document.getElementById('snapshot').src = "http://bitcoinshell.mooo.com:57001/snapshot" + '?time=' + (new Date()).getTime();
-	client.get('sensors.json', updateSensorVars);
 	var tempgauge = new canvasgauges.RadialGauge({
-		renderTo: 'tempgauge',
-		width: 100,
-		height: 100,
-	}).draw();
+			renderTo: 'tempgauge',
+			width: 100,
+			height: 100,
+		}).draw();
+	
+	function update() {
+	
+		client.get('sensors.json', updateSensorVars);
+		document.getElementById('snapshot').src = "http://bitcoinshell.mooo.com:57001/snapshot" + '?time=' + (new Date()).getTime();
+
+	}
+	update()
+	setInterval(update, 15000)
+	
+
+	
 	function updateSensorVars(err, res, body)  {
 		
 		if (err){
@@ -41,6 +51,9 @@
 		
 		
 	}
+	
+	
+	
 
 
 
